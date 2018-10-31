@@ -1,6 +1,6 @@
 # OS-ELM
 
-In this repository, we provide a Numpy implementation of Online Sequential Extreme Learning Machine (OS-ELM) introduced by Liang et al. in this [paper](https://ieeexplore.ieee.org/document/4012031/)
+In this repository, we provide a Numpy implementation of Online Sequential Extreme Learning Machine (OS-ELM) introduced by Liang et al. in this [paper](https://ieeexplore.ieee.org/document/4012031/).
 
 ### Dependencies
 We tested out code by using the following libraries:
