@@ -16,9 +16,12 @@ class OS_ELM(object):
 
         self.__is_finished_init_train = False
 
+        # alpha = learning rate
         self.__alpha = np.array([[np.random.uniform(-1, 1) for _ in range(self.__n_hidden_nodes)] for i in range(self.__n_input_nodes)])
         self.__bias = np.array([np.random.uniform(-1, 1) for _ in range(self.__n_hidden_nodes)])
+        # beta is the weight of precision over recall in F-beta score
         self.__beta = np.zeros(shape=[self.__n_hidden_nodes, self.__n_output_nodes])
+        # model parameter
         self.__p = np.zeros(shape=[self.__n_hidden_nodes, self.__n_hidden_nodes])
 
     def predict(self, x):
@@ -63,6 +66,7 @@ class OS_ELM(object):
         self.__build_seq_train_graph(x, t)
 
     def __build_init_train_graph(self, x, t):
+        # hidden layer output matrix
         H = activation(np.dot(x, self.__alpha) + self.__bias)
         HT = np.transpose(H)
         HTH = np.dot(HT, H)
@@ -72,6 +76,7 @@ class OS_ELM(object):
         return self.__beta
 
     def __build_seq_train_graph(self, x, t):
+        # hidden layer output matrix
         H = activation(np.dot(x, self.__alpha) + self.__bias)
         HT = np.transpose(H)
         batch_size = x.shape[0]
