@@ -64,7 +64,6 @@ class OS_ELM(object):
 
     def __build_init_train_graph(self, x, t):
         H = activation(np.dot(x, self.__alpha) + self.__bias)
-        print(np.transpose(H))
         HT = np.transpose(H)
         HTH = np.dot(HT, H)
         self.__p = np.linalg.inv(HTH)
