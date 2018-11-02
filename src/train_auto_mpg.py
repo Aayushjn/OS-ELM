@@ -28,8 +28,8 @@ def main():
     t = data.iloc[:, data.shape[1] - 1]
     normalize_q = x.values.max()
 
-    # for val in x:
-    #     x[val] /= normalize_q
+    for val in x:
+        x[val] /= normalize_q
 
     x_train, x_test, t_train, t_test = train_test_split(x, t, train_size=0.8, test_size=0.2)
 
