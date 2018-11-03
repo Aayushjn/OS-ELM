@@ -9,6 +9,7 @@ We tested the code by using the following libraries:
   * pandas==0.23.4
   * scikit-learn==0.20.0
   * tqdm==4.28.1
+  * matplotlib==3.0.1
   
 The libraries can be downloaded using the following commands:
   * `pip install -U numpy scikit-learn pandas`

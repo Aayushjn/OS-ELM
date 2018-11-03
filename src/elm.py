@@ -1,11 +1,14 @@
 from math import ceil
 
 import numpy as np
-from sklearn.metrics import mean_squared_error
 
 
 def activation(x):
     return 1 / (1 + np.exp(-x))
+
+
+def mean_squared_error(a, b):
+    return ((a - b) ** 2).mean(axis=None)
 
 
 class OS_ELM(object):
@@ -33,15 +36,15 @@ class OS_ELM(object):
         met = []
         for m in metrics:
             if m == 'loss':
-                met.append(mean_squared_error(t, self.predict(x)))
+                met.append(mean_squared_error(self.predict(x), t))
             elif m == 'accuracy':
-                tp = tn = 0
+                tp = fp = 0
                 for i in range(len(x)):
                     if ceil(self.predict(x)[i]) == t[i]:
                         tp += 1
                     else:
-                        tn += 1
-                met.append(((tp + tn) / len(x)))
+                        fp += 1
+                met.append((tp / (tp + fp)))
             else:
                 return ValueError('An unknown metric \'{}\' was given.'.format(m))
 
